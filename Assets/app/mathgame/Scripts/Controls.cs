@@ -18,7 +18,17 @@ public class Controls : MonoBehaviour
 
             if (hit = Physics2D.Raycast(mousepos_V2, Vector2.zero, selectableMask))
             {
-                hit.collider.GetComponent<Block>().beingDragged();
+                //TODO fix raycast error
+                try
+                {
+                    hit.collider.GetComponent<Block>().beingDragged();
+                    print("Picked up: " + hit.collider.name);
+                }
+                catch (System.Exception)
+                {
+                    Debug.LogError("ERROR: Somehow Picked up: " + hit.collider.name);
+                }
+                
             }
         }
     }

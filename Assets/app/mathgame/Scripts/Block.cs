@@ -7,17 +7,35 @@ using UnityEngine.UI;
 public class Block : MonoBehaviour
 {
     [SerializeField] bool isDragged = false;
+    Vector2 startingPos;
+    [SerializeField] Slot slot;
 
     //cache
     [SerializeField] Text text;
     [SerializeField] Canvas canvas;
     [SerializeField] SpriteRenderer ren;
 
+    void Start()
+    {
+        SaveStartingPostion();
+    }
+
     // Update is called once per frame
     void Update()
     {
         drag();
         checkifstillDragged();
+    }
+
+    public void Reset()
+    {
+        slot = null;
+        ResetPositiontoStart();
+    }
+
+    private void SaveStartingPostion()
+    {
+        startingPos = this.transform.position;
     }
 
     private void drag()
@@ -33,16 +51,25 @@ public class Block : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if (isDragged)//last dragged block stays on top
-            {
-                SetSortingOrders(1);
-            }
-            else
-            {
-                SetSortingOrders(0);
-            }
+            HandleDropPosition();
             isDragged = false;
         }
+    }
+
+    private void HandleDropPosition()
+    {
+        if (slot != null)
+        {
+            //slot.Signal(this);
+            SnapToSlot();
+        }
+        else
+            ResetPositiontoStart();
+    }
+
+    private void ResetPositiontoStart()
+    {
+        this.transform.position = startingPos;
     }
 
     private void SetSortingOrders(int x)
@@ -58,8 +85,25 @@ public class Block : MonoBehaviour
         this.transform.position = mousepos_V2;
     }
 
+    private void SnapToSlot()
+    {
+        this.transform.position = slot.transform.position;
+    }
+
     public void beingDragged()
     {
         isDragged = true;
+    }
+    ////////////////////////////////////////////
+    /// Physics Handling Slot
+    //////////////////////////////////////////
+    void OnTriggerStay2D(Collider2D other)
+    {
+        slot = other.GetComponent<Slot>();
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        slot = null;
     }
 }
