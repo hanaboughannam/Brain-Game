@@ -4,16 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
+public class Relationship_BS
+{
+    public Block block;
+    public Slot slot;
+
+    public bool isActive
+    {
+        get
+        {
+            return (block != null && slot != null);
+        }
+    }
+
+    public Relationship_BS(Block block, Slot slot)
+    {
+        this.block = block;
+        this.slot = slot;
+    }
+}
+
 public class Block : MonoBehaviour
 {
     [SerializeField] bool isDragged = false;
     Vector2 startingPos;
-    [SerializeField] Slot slot;
+    [SerializeField] Relationship_BS relationship;
 
     //cache
     [SerializeField] Text text;
     [SerializeField] Canvas canvas;
     [SerializeField] SpriteRenderer ren;
+    [SerializeField] SlotSensor sensor;
 
     void Start()
     {
@@ -29,7 +51,6 @@ public class Block : MonoBehaviour
 
     public void Reset()
     {
-        slot = null;
         ResetPositiontoStart();
     }
 
@@ -49,7 +70,7 @@ public class Block : MonoBehaviour
 
     private void checkifstillDragged()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && isDragged)
         {
             HandleDropPosition();
             isDragged = false;
@@ -58,13 +79,38 @@ public class Block : MonoBehaviour
 
     private void HandleDropPosition()
     {
-        if (slot != null)
-        {
-            //slot.Signal(this);
-            SnapToSlot();
-        }
-        else
+        if (!TryToConnectToASlot())
             ResetPositiontoStart();
+    }
+
+    private bool TryToConnectToASlot()
+    {
+        if (sensor.getSlot() != null)
+        {
+            MarrySlot(sensor.getSlot());
+            SnapToSlot();
+            return true;
+        }
+        print("Connection Failed");
+        if(this.relationship.isActive)
+            EndRelationship();
+        return false;
+    }
+
+    private void MarrySlot(Slot slot)
+    {
+        if (slot.relationship != null && slot.relationship.isActive)
+            slot.Divorce();
+
+        Relationship_BS newRelationship = new Relationship_BS(this, sensor.getSlot());
+        this.relationship = slot.relationship = newRelationship;
+    }
+
+    public void EndRelationship()
+    {
+        this.relationship.slot.EndRelationship();
+        this.relationship = null;
+        ResetPositiontoStart();
     }
 
     private void ResetPositiontoStart()
@@ -85,25 +131,18 @@ public class Block : MonoBehaviour
         this.transform.position = mousepos_V2;
     }
 
-    private void SnapToSlot()
+    public void SnapToSlot()
     {
-        this.transform.position = slot.transform.position;
+        this.transform.position = sensor.getSlot().transform.position;
     }
 
     public void beingDragged()
     {
         isDragged = true;
     }
-    ////////////////////////////////////////////
-    /// Physics Handling Slot
-    //////////////////////////////////////////
-    void OnTriggerStay2D(Collider2D other)
-    {
-        slot = other.GetComponent<Slot>();
-    }
 
-    void OnTriggerExit2D(Collider2D other)
+    internal string getValue()
     {
-        slot = null;
+        return text.text;
     }
 }

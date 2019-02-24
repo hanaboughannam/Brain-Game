@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 1758406256568753932}
   - component: {fileID: 3955671569203050764}
   - component: {fileID: 3052133311673172971}
+  - component: {fileID: 2419789253324150400}
   - component: {fileID: 5097532096188115801}
   - component: {fileID: 3895110748367839910}
   m_Layer: 8
@@ -175,10 +176,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragged: 0
-  slot: {fileID: 0}
   text: {fileID: 4700639145263989377}
   canvas: {fileID: 8157190080809505143}
   ren: {fileID: 3955671569203050764}
+  sensor: {fileID: 2419789253324150400}
+--- !u!114 &2419789253324150400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757922517131107800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fa0515e4ae5ed47a421b41374f82fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot: {fileID: 0}
 --- !u!61 &5097532096188115801
 BoxCollider2D:
   m_ObjectHideFlags: 0

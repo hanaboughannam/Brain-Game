@@ -5,31 +5,23 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    [SerializeField] Block block;
+    public Relationship_BS relationship;
 
-    // Start is called before the first frame update
-    void Start()
+    public string getValue()
     {
-        
+        if (this.relationship != null && this.relationship.isActive)
+            return this.relationship.block.getValue();
+        return "";
     }
 
-    // Update is called once per frame
-    void Update()
+    internal void EndRelationship()
     {
-        
+        this.relationship = null;
     }
 
-    public void Signal(Block block)
+    internal void Divorce()
     {
-        if(this.block == null)
-        {
-            this.block = block;
-        }
-        else
-        {
-            this.block.Reset();
-            this.block = block;
-        }
-
+        this.relationship.block.EndRelationship();
+        EndRelationship();
     }
 }
