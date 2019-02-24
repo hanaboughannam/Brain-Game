@@ -12,5 +12,7 @@ public class SlotViewer : Editor
         Slot slot = (Slot)target;
 
         EditorGUILayout.LabelField("My Block's Value = " + slot.getValue());
+
+        Repaint();
     }
 }
