@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Controls : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
             Vector3 mousepos_V3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousepos_V2 = new Vector2(mousepos_V3.x, mousepos_V3.y);

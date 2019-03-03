@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 [Serializable]
 public class Relationship_BS
@@ -70,7 +71,7 @@ public class Block : MonoBehaviour
 
     private void onDrop()
     {
-        if (Input.GetMouseButtonUp(0) && isDragged)
+        if (CrossPlatformInputManager.GetButtonUp("Fire1") && isDragged)
         {
             HandleDropPosition();
             isDragged = false;
