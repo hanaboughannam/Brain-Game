@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlotReader : MonoBehaviour
 {
-    [SerializeField]List<Slot> slots;
+    [SerializeField]Slot[] slots;
     /// <summary>
     /// Reads all slot. If a slot has no value then this returns nothing
     /// </summary>
@@ -23,9 +23,9 @@ public class SlotReader : MonoBehaviour
         return str;
     }
 
-    public string[] packSlotvalues()
+    public string[] getSlotValues()
     {
-        string[] arr = new string[slots.Count];
+        string[] arr = new string[slots.Length];
 
         for (int i = 0; i < arr.Length; i++)
         {

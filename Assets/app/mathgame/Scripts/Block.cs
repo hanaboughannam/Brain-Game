@@ -46,7 +46,7 @@ public class Block : MonoBehaviour
     void Update()
     {
         drag();
-        checkifstillDragged();
+        onDrop();
     }
 
     public void Reset()
@@ -68,12 +68,13 @@ public class Block : MonoBehaviour
         }
     }
 
-    private void checkifstillDragged()
+    private void onDrop()
     {
         if (Input.GetMouseButtonUp(0) && isDragged)
         {
             HandleDropPosition();
             isDragged = false;
+            GameMaster.tick();
         }
     }
 
@@ -144,5 +145,10 @@ public class Block : MonoBehaviour
     internal string getValue()
     {
         return text.text;
+    }
+
+    internal void setValue(string v)
+    {
+        this.text.text = v;
     }
 }

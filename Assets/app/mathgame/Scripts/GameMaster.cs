@@ -24,12 +24,13 @@ public static class EquationTester
             case "*":
                 return (a * b == c);
             case "/":
-                return (a * b == c);
+                return (a / b == c);
             case "+":
-                return (a * b == c);
+                return (a + b == c);
             case "-":
-                return (a * b == c);
+                return (a - b == c);
             default:
+                Debug.Log("FAIL");
                 break;
         }
 
@@ -39,14 +40,34 @@ public static class EquationTester
 
 public class GameMaster : MonoBehaviour
 {
+    public static GameMaster INSTANCE;
+
     [SerializeField] SlotReader reader;
+    [SerializeField] BlockWriter writer;
+
+    void Start()
+    {
+        INSTANCE = this;
+
+        string[] testvalues = { "8", "*","8", "2", "16", "100", "5", "/", "2", "10"};
+        writer.setBlockValues(testvalues);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (EquationTester.TestEquation(reader.packSlotvalues()))
+        
+    }
+
+    public static void tick()
+    {
+        if (EquationTester.TestEquation(INSTANCE.reader.getSlotValues()))
         {
             print("Success");
-        }//todo: dont have this run every frame
+        }
+        else
+        {
+            print("Failed");
+        }
     }
 }
