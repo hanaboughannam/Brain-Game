@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityStandardAssets.CrossPlatformInput;
 
 public static class EquationTester
 {
@@ -47,20 +47,28 @@ public class GameMaster : MonoBehaviour
     [SerializeField] BlockWriter writer;
     [SerializeField] Transform successPanel;
 
-    [SerializeField] bool hasPassed = false;
-
     void Start()
     {
         INSTANCE = this;
 
-        string[] testvalues = { "8", "*","8", "2", "16", "100", "5", "/", "2", "10"};
-        writer.setBlockValues(testvalues);
+        writer.setBlockValues(EquationGenerator.generate(10));
     }
 
     // Update is called once per frame
     void Update()
     {
-        successPanel.gameObject.SetActive(hasPassed);
+        
+        HandleDebug();
+
+    }
+
+    private void HandleDebug()
+    {
+        if (Debug.isDebugBuild)
+        {
+            if (CrossPlatformInputManager.GetButton("Jump"))
+                ReloadScene();
+        }
     }
 
     public static void tick()
@@ -68,12 +76,13 @@ public class GameMaster : MonoBehaviour
         if (EquationTester.TestEquation(INSTANCE.reader.getSlotValues()))
         {
             print("Success");
-            INSTANCE.hasPassed = true;
+            INSTANCE.successPanel.gameObject.SetActive(true);
+            ///access score
         }
         else
         {
             print("Failed");
-            INSTANCE.hasPassed = false;
+            INSTANCE.successPanel.gameObject.SetActive(false);
         }
     }
 
