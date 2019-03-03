@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.SceneManagement;
 
 
 public static class EquationTester
@@ -40,10 +41,13 @@ public static class EquationTester
 
 public class GameMaster : MonoBehaviour
 {
-    public static GameMaster INSTANCE;
-
+    //cache
+    static GameMaster INSTANCE;
     [SerializeField] SlotReader reader;
     [SerializeField] BlockWriter writer;
+    [SerializeField] Transform successPanel;
+
+    [SerializeField] bool hasPassed = false;
 
     void Start()
     {
@@ -56,7 +60,7 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        successPanel.gameObject.SetActive(hasPassed);
     }
 
     public static void tick()
@@ -64,10 +68,17 @@ public class GameMaster : MonoBehaviour
         if (EquationTester.TestEquation(INSTANCE.reader.getSlotValues()))
         {
             print("Success");
+            INSTANCE.hasPassed = true;
         }
         else
         {
             print("Failed");
+            INSTANCE.hasPassed = false;
         }
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
