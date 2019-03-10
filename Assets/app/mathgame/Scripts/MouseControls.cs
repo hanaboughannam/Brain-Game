@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Controls : MonoBehaviour
+public class MouseControls : MonoBehaviour
 {
     [SerializeField] LayerMask selectableMask;
 

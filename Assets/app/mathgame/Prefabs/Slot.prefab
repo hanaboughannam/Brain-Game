@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1887868652058845693}
   - component: {fileID: 9046478761739876343}
   - component: {fileID: 2342984026641974481}
+  - component: {fileID: 4792492775582744121}
   m_Layer: 9
   m_Name: Slot
   m_TagString: Untagged
@@ -51,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,6 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed53eb1c865ef68449e3a8e162342f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  relationship:
+    block: {fileID: 0}
+    slot: {fileID: 0}
+  glowEffect: {fileID: 4792492775582744121}
 --- !u!61 &9046478761739876343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +146,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4792492775582744121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9069029670983308844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 0, g: 0.6415094, b: 0.08391143, a: 1}
+  glowBrightness: 1
+  outlineWidth: 0
+  alphaThreshold: 0.96
+  drawOutside: 0
+  enableInstancing: 0
