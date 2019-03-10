@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
+using SpriteGlow;
 
 [Serializable]
 public class Relationship_BS
@@ -37,6 +38,7 @@ public class Block : MonoBehaviour
     [SerializeField] Canvas canvas;
     [SerializeField] SpriteRenderer ren;
     [SerializeField] SlotSensor sensor;
+    public SpriteGlowEffect glowEffect;
 
     void Start()
     {
