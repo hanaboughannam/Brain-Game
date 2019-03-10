@@ -104,15 +104,19 @@ public class Block : MonoBehaviour
         if (slot.relationship != null && slot.relationship.isActive)
             slot.Divorce();
 
+        if (this.relationship != null && this.relationship.isActive)
+            EndRelationship(false);
+
         Relationship_BS newRelationship = new Relationship_BS(this, sensor.getSlot());
         this.relationship = slot.relationship = newRelationship;
     }
 
-    public void EndRelationship()
+    public void EndRelationship(bool backToStart = true)
     {
         this.relationship.slot.EndRelationship();
         this.relationship = null;
-        ResetPositiontoStart();
+        if(backToStart)
+            ResetPositiontoStart();
     }
 
     private void ResetPositiontoStart()
@@ -151,5 +155,6 @@ public class Block : MonoBehaviour
     internal void setValue(string v)
     {
         this.text.text = v;
+        this.gameObject.name = "Block==" + v;
     }
 }
