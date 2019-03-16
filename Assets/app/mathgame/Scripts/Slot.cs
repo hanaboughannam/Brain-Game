@@ -8,6 +8,7 @@ public class Slot : MonoBehaviour
 {
     public Relationship_BS relationship;
     public SpriteGlowEffect glowEffect;
+    public bool locked = false;
 
     public string getValue()
     {

@@ -12,7 +12,12 @@ public class SlotSensor : MonoBehaviour
     //////////////////////////////////////////
     void OnTriggerStay2D(Collider2D other)
     {
-        slot = other.GetComponent<Slot>();
+        var sensed = other.GetComponent<Slot>();
+        if (sensed)
+        {
+            if (!sensed.locked)
+                slot = other.GetComponent<Slot>();
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
