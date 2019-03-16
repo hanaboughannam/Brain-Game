@@ -32,6 +32,7 @@ public class Block : MonoBehaviour
     [SerializeField] bool isDragged = false;
     Vector2 startingPos;
     [SerializeField] Relationship_BS relationship;
+    [SerializeField] bool locked = false;
 
     //cache
     [SerializeField] Text text;
@@ -48,6 +49,8 @@ public class Block : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (locked)
+            return;
         drag();
         onDrop();
     }
@@ -83,16 +86,16 @@ public class Block : MonoBehaviour
 
     private void HandleDropPosition()
     {
-        if (!TryToConnectToASlot())
+        if (!TryToConnectToASlot(sensor.getSlot()))
             ResetPositiontoStart();
     }
 
-    private bool TryToConnectToASlot()
+    private bool TryToConnectToASlot(Slot slot)
     {
-        if (sensor.getSlot() != null)
+        if (slot != null)
         {
-            MarrySlot(sensor.getSlot());
-            SnapToSlot();
+            MarrySlot(slot);
+            SnapToSlot(slot);
             return true;
         }
         print("Connection Failed");
@@ -139,9 +142,9 @@ public class Block : MonoBehaviour
         this.transform.position = mousepos_V2;
     }
 
-    public void SnapToSlot()
+    public void SnapToSlot(Slot slot)
     {
-        this.transform.position = sensor.getSlot().transform.position;
+        this.transform.position = slot.transform.position;
     }
 
     public void beingDragged()
@@ -158,5 +161,11 @@ public class Block : MonoBehaviour
     {
         this.text.text = v;
         this.gameObject.name = "Block==" + v;
+    }
+
+    public void presetToSlot(Slot slot)
+    {
+        if(TryToConnectToASlot(slot))
+            locked = true;
     }
 }

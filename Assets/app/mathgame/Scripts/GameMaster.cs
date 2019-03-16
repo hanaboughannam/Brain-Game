@@ -52,6 +52,11 @@ public class GameMaster : MonoBehaviour
         INSTANCE = this;
 
         writer.setBlockValues(EquationGenerator.generate(10));
+
+        //var blocks = FindObjectsOfType<Block>();
+        //var slots = FindObjectsOfType<Slot>();
+
+        //blocks[0].presetToSlot(slots[0]);
     }
 
     // Update is called once per frame
