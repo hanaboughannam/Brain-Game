@@ -50,18 +50,23 @@ public class GameMaster : MonoBehaviour
     void Start()
     {
         INSTANCE = this;
+        string[] math_operator = { "+", "-", "*", "/" };
 
-        var mixedEquation = EquationGenerator.generate(10);
+        string[] sampleEquation;
+        var mixedEquation = EquationGenerator.generate(math_operator, false,1,10, out sampleEquation);
         writer.setBlockValues(mixedEquation);
 
         Block[] equationBlocks = {
-            writer.getBlockbyString(mixedEquation[0]),
-            writer.getBlockbyString(mixedEquation[1]),
-            writer.getBlockbyString(mixedEquation[2]),
-            writer.getBlockbyString(mixedEquation[3])};
+            writer.getBlockbyString(sampleEquation[0]),
+            writer.getBlockbyString(sampleEquation[1]),
+            (sampleEquation[0] == sampleEquation[2])?writer.getBlockbyString(sampleEquation[2],true):writer.getBlockbyString(sampleEquation[2]),
+            writer.getBlockbyString(sampleEquation[3])};// todo make sense
 
-        bool[] placeinslot = {true,true,true,false};
-        //FillSlotsByEquation(equationBlocks , placeinslot);
+
+       
+
+        bool[] placeinslot = {false, false, false, false };
+        FillSlotsByEquation(equationBlocks , placeinslot);
         //var blocks = FindObjectsOfType<Block>();
         //var slots = FindObjectsOfType<Slot>();
 

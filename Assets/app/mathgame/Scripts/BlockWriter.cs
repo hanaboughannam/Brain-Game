@@ -17,12 +17,21 @@ public class BlockWriter : MonoBehaviour
         }
     }
 
-    public Block getBlockbyString(string value)
+    public Block getBlockbyString(string value, bool skipOnce = false)
     {
         for (int i = 0; i < blocks.Length; i++)
         {
             if (blocks[i].getValue() == value)
-                return blocks[i];
+            {
+                if (skipOnce)
+                {
+                    skipOnce = false;
+                    Debug.Log("awdawdwad");
+                }
+                else
+                    return blocks[i];
+            }
+                
         }
         return null;
     }
