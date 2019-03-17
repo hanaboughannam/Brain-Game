@@ -56,14 +56,7 @@ public class GameMaster : MonoBehaviour
         var mixedEquation = EquationGenerator.generate(math_operator, false,1,10, out sampleEquation);
         writer.setBlockValues(mixedEquation);
 
-        Block[] equationBlocks = {
-            writer.getBlockbyString(sampleEquation[0]),
-            writer.getBlockbyString(sampleEquation[1]),
-            (sampleEquation[0] == sampleEquation[2])?writer.getBlockbyString(sampleEquation[2],true):writer.getBlockbyString(sampleEquation[2]),
-            writer.getBlockbyString(sampleEquation[3])};// todo make sense
-
-
-       
+        Block[] equationBlocks = writer.getBlocksbyString(sampleEquation);
 
         bool[] placeinslot = {false, false, false, false };
         FillSlotsByEquation(equationBlocks , placeinslot);
