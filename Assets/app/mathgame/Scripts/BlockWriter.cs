@@ -17,4 +17,13 @@ public class BlockWriter : MonoBehaviour
         }
     }
 
+    public Block getBlockbyString(string value)
+    {
+        for (int i = 0; i < blocks.Length; i++)
+        {
+            if (blocks[i].getValue() == value)
+                return blocks[i];
+        }
+        return null;
+    }
 }

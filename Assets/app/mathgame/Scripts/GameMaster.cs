@@ -51,12 +51,22 @@ public class GameMaster : MonoBehaviour
     {
         INSTANCE = this;
 
-        writer.setBlockValues(EquationGenerator.generate(10));
+        var mixedEquation = EquationGenerator.generate(10);
+        writer.setBlockValues(mixedEquation);
 
+        Block[] equationBlocks = {
+            writer.getBlockbyString(mixedEquation[0]),
+            writer.getBlockbyString(mixedEquation[1]),
+            writer.getBlockbyString(mixedEquation[2]),
+            writer.getBlockbyString(mixedEquation[3])};
+
+        bool[] placeinslot = {true,true,true,false};
+        //FillSlotsByEquation(equationBlocks , placeinslot);
         //var blocks = FindObjectsOfType<Block>();
         //var slots = FindObjectsOfType<Slot>();
 
         //blocks[0].presetToSlot(slots[0]);
+        
     }
 
     // Update is called once per frame
@@ -94,5 +104,24 @@ public class GameMaster : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+    
+    void FillSlotsByEquation(Block[] equationBlocks,bool [] placeInSlot)
+    {
+        if (equationBlocks.Length != 4)
+        {
+            Debug.Log("No real equation");
+            return;
+        }
+
+        var slots = reader.GetSlots();
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if(placeInSlot[i])
+                equationBlocks[i].presetToSlot(slots[i]);
+        }
     }
 }

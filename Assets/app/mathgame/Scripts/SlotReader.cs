@@ -34,4 +34,9 @@ public class SlotReader : MonoBehaviour
 
         return arr;
     }
+
+    public Slot[] GetSlots()
+    {
+        return slots;
+    }
 }
