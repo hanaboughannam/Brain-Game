@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd5a49a1c37e254ca6ec8746888687f, type: 3}
   m_Name: Diff_10
   m_EditorClassIdentifier: 
-  MATH_OPERATOR: []
+  MATH_OPERATOR:
+  - +
+  - '-'
+  - '*'
+  - /
   MIN: 0
-  MAX: 0
-  allowNegatives: 0
-  blockPlacement: []
+  MAX: 12
+  allowNegatives: 1
+  blockPlacement:
+  - 
+  - 
+  - 
+  - 

@@ -18,4 +18,8 @@ MonoBehaviour:
   MIN: 0
   MAX: 9
   allowNegatives: 0
-  placeinslot: 01010100
+  blockPlacement:
+  - X
+  - X
+  - X
+  - 
