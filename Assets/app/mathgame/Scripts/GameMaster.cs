@@ -130,8 +130,12 @@ public class GameMaster : MonoBehaviour
 
         for (int i = 0; i < slots.Length; i++)
         {
-            if(placeInSlot[i])
+            if (placeInSlot[i])
+            {
                 equationBlocks[i].presetToSlot(slots[i]);
+                slots[i].locked = true;
+            }
+                
         }
     }
 }

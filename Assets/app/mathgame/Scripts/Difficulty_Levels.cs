@@ -7,7 +7,7 @@ public class Difficulty_Levels : MonoBehaviour
 {
     [SerializeField] Difficulty[] difficulties;
 
-    [Range(0, 2)]
+    [Range(0, 9)]
     [SerializeField] int diff_index = 0;
     public Difficulty current_diff
     {
