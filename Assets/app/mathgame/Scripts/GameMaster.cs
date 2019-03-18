@@ -47,24 +47,36 @@ public class GameMaster : MonoBehaviour
     [SerializeField] BlockWriter writer;
     [SerializeField] Transform successPanel;
 
+    [SerializeField] Difficulty_Levels difficulty_Levels;
+
+    private Difficulty diff
+    {
+        get
+        {
+            return difficulty_Levels.current_diff;
+        }
+    }
+
     void Start()
     {
         INSTANCE = this;
-        string[] math_operator = { "+", "-", "*", "/" };
 
+        difficulty_Levels = FindObjectOfType<Difficulty_Levels>();
+
+        print("Using " + diff.name);
+
+        BuildRound();
+    }
+
+    private void BuildRound()
+    {
         string[] sampleEquation;
-        var mixedEquation = EquationGenerator.generate(math_operator, false,1,10, out sampleEquation);
+        var mixedEquation = EquationGenerator.generate(diff.MATH_OPERATOR, diff.allowNegatives, diff.MIN, diff.MAX, out sampleEquation);
         writer.setBlockValues(mixedEquation);
 
         Block[] equationBlocks = writer.getBlocksbyString(sampleEquation);
 
-        bool[] placeinslot = {false, false, false, false };
-        FillSlotsByEquation(equationBlocks , placeinslot);
-        //var blocks = FindObjectsOfType<Block>();
-        //var slots = FindObjectsOfType<Slot>();
-
-        //blocks[0].presetToSlot(slots[0]);
-        
+        FillSlotsByEquation(equationBlocks, diff.placeinslot);
     }
 
     // Update is called once per frame

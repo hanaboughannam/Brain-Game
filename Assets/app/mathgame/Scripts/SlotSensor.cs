@@ -16,7 +16,7 @@ public class SlotSensor : MonoBehaviour
         if (sensed)
         {
             if (!sensed.locked)
-                slot = other.GetComponent<Slot>();
+                slot = sensed;
         }
     }
 

@@ -112,7 +112,7 @@ public class Block : MonoBehaviour
         if (this.relationship != null && this.relationship.isActive)
             EndRelationship(false);
 
-        Relationship_BS newRelationship = new Relationship_BS(this, sensor.getSlot());
+        Relationship_BS newRelationship = new Relationship_BS(this, slot);
         this.relationship = slot.relationship = newRelationship;
     }
 
