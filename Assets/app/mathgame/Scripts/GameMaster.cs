@@ -25,6 +25,14 @@ public static class EquationTester
             case "*":
                 return (a * b == c);
             case "/":
+                try
+                {
+                    return (a / b == c);
+                }
+                catch
+                {
+                    Debug.Log("Caught divide by zero :D");
+                }
                 return (a / b == c);
             case "+":
                 return (a + b == c);

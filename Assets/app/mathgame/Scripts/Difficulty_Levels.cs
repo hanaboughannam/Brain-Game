@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Difficulty_Levels : MonoBehaviour
 {
     [SerializeField] Difficulty[] difficulties;
@@ -19,11 +18,12 @@ public class Difficulty_Levels : MonoBehaviour
      // Start is called before the first frame update
     void Start()
     {
-        diff_index = FindObjectOfType<DifficultyController>().diff_index;
+        SetDifficultyByScore();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetDifficultyByScore()
     {
+        //todo re write for score leveling
+        diff_index = FindObjectOfType<DifficultyController>().diff_index;
     }
 }
