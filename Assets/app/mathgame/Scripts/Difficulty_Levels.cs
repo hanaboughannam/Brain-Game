@@ -7,8 +7,8 @@ public class Difficulty_Levels : MonoBehaviour
 {
     [SerializeField] Difficulty[] difficulties;
 
-    [Range(0, 9)]
-    [SerializeField] int diff_index = 0;
+    int diff_index = 0;
+
     public Difficulty current_diff
     {
         get
@@ -19,7 +19,7 @@ public class Difficulty_Levels : MonoBehaviour
      // Start is called before the first frame update
     void Start()
     {
-        
+        diff_index = FindObjectOfType<DifficultyController>().diff_index;
     }
 
     // Update is called once per frame
