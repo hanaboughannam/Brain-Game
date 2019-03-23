@@ -125,8 +125,9 @@ GameObject:
   - component: {fileID: 229136417}
   - component: {fileID: 229136416}
   - component: {fileID: 229136419}
+  - component: {fileID: 229136420}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Start Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,8 +193,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 229136419}
-        m_MethodName: loadPlayerSetup
+      - m_Target: {fileID: 229136420}
+        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -252,6 +253,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25b61dec80012a346aa74bc928d6bebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &229136420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229136414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97b1f975cd1e5e4f873c3cbec13a8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &477592206
@@ -498,7 +511,7 @@ GameObject:
   - component: {fileID: 993916906}
   - component: {fileID: 993916905}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,8 +533,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.51600003, y: 0.5}
   m_AnchorMax: {x: 0.51600003, y: 0.5}
-  m_AnchoredPosition: {x: -12.992, y: -12}
-  m_SizeDelta: {x: 191.8, y: 84.8}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 336.49, y: 80.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &993916905
 MonoBehaviour:
@@ -543,7 +556,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: title
+  m_text: DONT FORGET!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d90151c507a65c14a98d18788cff92e7, type: 2}
   m_sharedMaterial: {fileID: 21781795730789852, guid: d90151c507a65c14a98d18788cff92e7,
@@ -572,14 +585,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 43.5
+  m_fontSizeBase: 43.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -590,7 +603,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -613,10 +626,10 @@ MonoBehaviour:
   m_margin: {x: 1.6175232, y: -0.002166748, z: 0.017364502, w: 0}
   m_textInfo:
     textComponent: {fileID: 993916905}
-    characterCount: 5
+    characterCount: 12
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1

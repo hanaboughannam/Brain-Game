@@ -9,4 +9,5 @@ public class Welcome : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("PlayerSetup");
     }
+
 }
