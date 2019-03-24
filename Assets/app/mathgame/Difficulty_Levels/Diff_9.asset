@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Diff_9
   m_EditorClassIdentifier: 
   MATH_OPERATOR:
-  - +
-  - '-'
   - '*'
   - /
   MIN: 0

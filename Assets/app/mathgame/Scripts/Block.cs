@@ -99,8 +99,9 @@ public class Block : MonoBehaviour
             return true;
         }
         print("Connection Failed");
-        if(this.relationship.isActive)
-            EndRelationship();
+        if(this.relationship != null)
+            if(this.relationship.isActive)
+                EndRelationship();
         return false;
     }
 

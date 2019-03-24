@@ -27,13 +27,13 @@ public static class EquationTester
             case "/":
                 try
                 {
-                    return (a / b == c);
+                    return ((float)a / (float)b == (float)c);
                 }
                 catch
                 {
                     Debug.Log("Caught divide by zero :D");
                 }
-                return (a / b == c);
+                break;
             case "+":
                 return (a + b == c);
             case "-":

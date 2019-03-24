@@ -69,7 +69,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 228
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 300
     m_Alignment: 4
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99
+  m_Text: 999
 --- !u!1 &1757922517131107800
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   relationship:
     block: {fileID: 0}
     slot: {fileID: 0}
+  locked: 0
   text: {fileID: 4700639145263989377}
   canvas: {fileID: 8157190080809505143}
   ren: {fileID: 7665383669095122439}
