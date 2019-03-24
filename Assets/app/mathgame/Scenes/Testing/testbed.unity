@@ -1943,7 +1943,8 @@ MonoBehaviour:
   - {fileID: 865701652}
   blockIndex: 0
   slotIndex: 0
-  pos: 0
+  pos_x: 0
+  pos_y: 0
 --- !u!1001 &1410778058
 PrefabInstance:
   m_ObjectHideFlags: 0
