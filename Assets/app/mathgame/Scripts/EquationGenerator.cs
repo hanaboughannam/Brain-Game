@@ -31,6 +31,11 @@ public static class EquationGenerator
         sampleEquation = fetch_equation(ref output, 0, allowNegatives);
         //get 4 elements
         fetch_equation(ref output, 4, allowNegatives);
+
+        if(output[1] == output[5])
+        {
+            output[5] = fetch_ran_number(min, max).ToString();
+        }
         //get 2 elements
         output[8] = fetch_ran_number(min,max).ToString();
         output[9] = fetch_ran_number(min,max).ToString();
@@ -160,7 +165,7 @@ public static class EquationGenerator
         int n = ran.Next(min, max);
         usedNumbers.Add(n);
 
-        if (FindNumberofOccurences(usedNumbers, n) > 3)
+        if (FindNumberofOccurences(usedNumbers, n) >= 3)
             return fetch_ran_number(min, max);
         else
             return n;
