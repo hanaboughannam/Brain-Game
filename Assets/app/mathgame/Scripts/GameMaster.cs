@@ -90,9 +90,11 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         HandleDebug();
 
+        if (successPanel.gameObject.activeSelf)
+            if (CrossPlatformInputManager.GetButtonDown("Submit"))
+                ReloadScene();
     }
 
     private void HandleDebug()

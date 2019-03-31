@@ -32,7 +32,7 @@ public class Block : MonoBehaviour
     [SerializeField] bool isDragged = false;
     Vector2 startingPos;
     [SerializeField] Relationship_BS relationship;
-    [SerializeField] bool locked = false;
+    public bool locked = false;
 
     //cache
     [SerializeField] Text text;
@@ -80,7 +80,6 @@ public class Block : MonoBehaviour
         {
             HandleDropPosition();
             isDragged = false;
-            GameMaster.tick();
         }
     }
 
@@ -125,6 +124,13 @@ public class Block : MonoBehaviour
             ResetPositiontoStart();
     }
 
+    public bool HasARelationship()
+    {
+        if (relationship == null)
+            return false;
+        return relationship.isActive;
+    }
+
     private void ResetPositiontoStart()
     {
         this.transform.position = startingPos;
@@ -146,6 +152,8 @@ public class Block : MonoBehaviour
     public void SnapToSlot(Slot slot)
     {
         this.transform.position = slot.transform.position;
+
+        GameMaster.tick();
     }
 
     public void beingDragged()
@@ -168,5 +176,11 @@ public class Block : MonoBehaviour
     {
         if(TryToConnectToASlot(slot))
             locked = true;
+    }
+
+    public void setToSlot(Slot slot)
+    {
+        TryToConnectToASlot(slot);
+        print("Moving " + this.name + " to " + slot.name);
     }
 }

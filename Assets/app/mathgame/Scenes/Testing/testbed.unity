@@ -2127,6 +2127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d118a245703f541955b534ed4ad560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
   blocks:
   - {fileID: 751285454}
   - {fileID: 1045759245}
@@ -2148,6 +2149,7 @@ MonoBehaviour:
   pos_x: 0
   pos_y: 0
   glowStrength: 10
+  isSelectingBlock: 1
 --- !u!1001 &1410778058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2797,7 +2799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a94a507367572640afe8f941b9f8e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diff_index: 9
+  diff_index: 6
 --- !u!1001 &1310565676462003054
 PrefabInstance:
   m_ObjectHideFlags: 0
