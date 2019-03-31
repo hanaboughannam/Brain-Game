@@ -18,6 +18,7 @@ public class KeyboardControls : MonoBehaviour
     [SerializeField] int glowStrength = 10;
     bool moving_x, moving_y = false;
     [SerializeField] bool isSelectingBlock = true;
+    
 
     void Start()
     {
@@ -35,25 +36,27 @@ public class KeyboardControls : MonoBehaviour
             HandleSelection();
             DrawSelection();
         }
-        else
-        {
-            if (CrossPlatformInputManager.GetButtonDown("Submit"))
-                enableControls();
+        if (CrossPlatformInputManager.GetButtonDown("Submit"))
+            enableControls();
 
-            if (CrossPlatformInputManager.GetAxis("Horizontal") != 0)
-                enableControls();
+        if (CrossPlatformInputManager.GetAxis("Horizontal") != 0)
+            enableControls();
 
-            if (CrossPlatformInputManager.GetAxis("Vertical") != 0)
-                enableControls();
-        }
+        if (CrossPlatformInputManager.GetAxis("Vertical") != 0)
+            enableControls();
+        
+            
     }
 
     private void enableControls()
     {
+        if(!active)
+            print("Enabled Keyboard Controls");
         active = true;
-        print("Enabled Keyboard Controls");
+
         DrawSelection();
     }
+    
 
     private void UpdateSelectionFocusandMoveBlocks()
     {
