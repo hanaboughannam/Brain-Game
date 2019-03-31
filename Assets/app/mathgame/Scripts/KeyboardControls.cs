@@ -10,6 +10,7 @@ public class KeyboardControls : MonoBehaviour
     [SerializeField] int blockIndex;
     [SerializeField] int slotIndex;
     [SerializeField] float pos_x,pos_y;
+    [SerializeField] int glowStrength = 10;
     bool moving_x, moving_y = false;
     // Start is called before the first frame update
     void Start()
@@ -95,7 +96,7 @@ public class KeyboardControls : MonoBehaviour
             if (tmp != blockIndex)
                 blocks[tmp].glowEffect.OutlineWidth = 0;
 
-            blocks[blockIndex].glowEffect.OutlineWidth = 1;
+            blocks[blockIndex].glowEffect.OutlineWidth = glowStrength;
             yield return new WaitForSeconds(1f);
         }
     }
@@ -121,7 +122,7 @@ public class KeyboardControls : MonoBehaviour
         if (tmp != blockIndex)
             blocks[tmp].glowEffect.OutlineWidth = 0;
 
-        blocks[blockIndex].glowEffect.OutlineWidth = 1;
+        blocks[blockIndex].glowEffect.OutlineWidth = glowStrength;
 
         while (pos_y != 0)
         {
@@ -133,27 +134,4 @@ public class KeyboardControls : MonoBehaviour
         moving_y = false;
     }
 
-    IEnumerator Move_y()
-    {
-        while (true)
-        {
-            int tmp = blockIndex;///save prevois
-            if (pos_y < 0)
-            {
-                print("down");
-                blockIndex = (blockIndex + 5) % 10;
-            }
-            else
-            {
-                print("up");
-                blockIndex = (blockIndex + 5) % 10;
-            }
-
-            if (tmp != blockIndex)
-                blocks[tmp].glowEffect.OutlineWidth = 0;
-
-            blocks[blockIndex].glowEffect.OutlineWidth = 1;
-            yield return new WaitForSeconds(1f);
-        }
-    }
 }

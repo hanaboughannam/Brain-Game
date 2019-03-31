@@ -165,7 +165,7 @@ public static class EquationGenerator
         int n = ran.Next(min, max);
         usedNumbers.Add(n);
 
-        if (FindNumberofOccurences(usedNumbers, n) >= 3)
+        if (FindNumberofOccurences(usedNumbers, n) >= 2)
             return fetch_ran_number(min, max);
         else
             return n;
