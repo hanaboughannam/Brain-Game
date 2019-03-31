@@ -105,7 +105,7 @@ public class GameMaster : MonoBehaviour
                 ReloadScene();
         }
     }
-
+    bool cashWin = false;
     public static void tick()
     {
         if (EquationTester.TestEquation(INSTANCE.reader.getSlotValues()))
@@ -113,6 +113,13 @@ public class GameMaster : MonoBehaviour
             print("Success");
             INSTANCE.successPanel.gameObject.SetActive(true);
             ///access score
+            ///
+            if (!INSTANCE.cashWin)
+            {
+                FindObjectOfType<PointSystem>().GivePoints(0, 100);
+                INSTANCE.cashWin = true;
+            }
+            
         }
         else
         {
@@ -126,8 +133,6 @@ public class GameMaster : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-
-    
     void FillSlotsByEquation(Block[] equationBlocks,bool [] placeInSlot)
     {
         if (equationBlocks.Length != 4)

@@ -24,6 +24,6 @@ public class Difficulty_Levels : MonoBehaviour
     private void SetDifficultyByScore()
     {
         //todo re write for score leveling
-        diff_index = FindObjectOfType<DifficultyController>().diff_index;
+        diff_index = FindObjectOfType<PointSystem>().GetLevel(0);
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 public class ExperiencePoints : MonoBehaviour
-{   public int experience;
+{
+    public int experience;
     public int difficultyMultiplier;
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class ExperiencePoints : MonoBehaviour
              difficultyMultiplier = 15625;  
         }
         
+         /// README it alll handled in the game master in tick 
         //TODO: Figure out how it works when something is correct and incorrect and make it so that exp reflects that
         // if (question == correct) {//IDK HOW THIS IS HANDLED
         //     experience = experience + difficultyMultiplier;
@@ -49,5 +51,13 @@ public class ExperiencePoints : MonoBehaviour
 
         
         
+    }
+
+    public static int PointsToLevel(int points)
+    {
+        int level = Mathf.FloorToInt( points / 100);
+        if (level > 9)
+            return 9;
+        return level;
     }
 }
