@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class PointSystem:MonoBehaviour
 {
     [SerializeField] Text text;
-    [SerializeField]int points = 0;//temp
 
     void Start()
     {
@@ -43,12 +42,17 @@ public class PointSystem:MonoBehaviour
     
     public void GivePoints(int account,int points)
     {
-        this.points += points;//temp
-        UpdateDisplay(this.points);
+        int newPoints = PlayerSaves.ReadProgress(0).points + points;
+
+        PlayerSaves.SaveProgress(0, newPoints);
+
+        UpdateDisplay(newPoints);
     }
 
     public int GetPoints(int account)
     {
+        int points = PlayerSaves.ReadProgress(0).points;
+
         UpdateDisplay(points);
         return points;//temp
     }

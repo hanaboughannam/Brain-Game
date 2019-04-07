@@ -7,7 +7,16 @@ public class Welcome : MonoBehaviour
 {
     public void loadPlayerSetup()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("PlayerSetup");
+        var sL = FindObjectOfType<SceneLoader>();
+
+        if (!PlayerSaves.doesSaveExist(0))
+        {
+            sL.LoadScene(1);
+            return;
+        }
+            
+
+        sL.LoadScene(2);
     }
 
 }

@@ -69,6 +69,14 @@ public class GameMaster : MonoBehaviour
     {
         INSTANCE = this;
 
+        //Assuming this is created before
+        //PlayerSaves.GenerateSave(0,"Leo", true); 
+
+        
+
+        print("PlayerName: " + PlayerSaves.ReadProgress(0).playerName);
+        print("Points: " + PlayerSaves.ReadProgress(0).points);
+
         difficulty_Levels = FindObjectOfType<Difficulty_Levels>();
 
         print("Using " + diff.name);

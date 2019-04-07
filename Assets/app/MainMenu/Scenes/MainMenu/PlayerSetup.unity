@@ -428,8 +428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -124.97}
-  m_SizeDelta: {x: 612.4, y: 156.1}
+  m_AnchoredPosition: {x: 0, y: -105.1}
+  m_SizeDelta: {x: 602.54, y: 82.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &773466928
 MonoBehaviour:
@@ -455,16 +455,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 55
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 60
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Please Enter Your Name \n"
+  m_Text: 'Please Enter Your Name '
 --- !u!222 &773466929
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -630,7 +630,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 868988254}
-        m_MethodName: SaveName
+        m_MethodName: CreateAccount
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -640,8 +640,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 868988256}
-        m_MethodName: loadPlayerSetup
+      - m_Target: {fileID: 868988255}
+        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -713,7 +713,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 868988249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eebe7df7bd13a64bb665ca4234867f8, type: 3}
+  m_Script: {fileID: 11500000, guid: b97b1f975cd1e5e4f873c3cbec13a8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &868988256

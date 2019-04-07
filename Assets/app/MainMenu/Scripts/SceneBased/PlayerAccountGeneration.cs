@@ -4,16 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
-public class SetName : MonoBehaviour
+public class PlayerAccountGeneration : MonoBehaviour
 {   
     public InputField inputText;
     string userName;
     public Text prompt;
     
-    void Start() {
+    void Start()
+    {
+        //GetUserName();
+    }
+
+    public void CreateAccount()
+    {
+        PlayerSaves.GenerateSave(0, inputText.text, true);
+    }
+
+    private void GetUserName()
+    {
         userName = PlayerPrefs.GetString("userName");
         inputText.text = userName;
-        if(userName != ""){
+        if (userName != "")
+        {
             Destroy(prompt);
         }
     }
