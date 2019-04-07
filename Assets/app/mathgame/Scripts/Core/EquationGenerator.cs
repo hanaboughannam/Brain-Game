@@ -127,6 +127,24 @@ public static class EquationGenerator
 
                 c = a * b;
 
+                if (a == 0 && c == 0)
+                {
+                    output[i] = a.ToString();
+                    i++;
+
+                    output[i] = "/";
+                    i++;
+
+                    output[i] = b.ToString();
+                    i++;
+
+
+                    output[i] = c.ToString();
+                    i++;
+
+                    break;
+                }
+
                 output[i] = c.ToString();
                 i++;
 
