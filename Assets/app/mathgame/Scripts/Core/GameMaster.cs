@@ -53,6 +53,7 @@ public class GameMaster : MonoBehaviour
 
     //cache
     static GameMaster INSTANCE;
+    [SerializeField] GameObject controls;
     [SerializeField] SlotReader reader;
     [SerializeField] BlockWriter writer;
     [SerializeField] Transform successPanel;
@@ -122,6 +123,7 @@ public class GameMaster : MonoBehaviour
         if (EquationTester.TestEquation(INSTANCE.reader.getSlotValues()))
         {
             print("Success");
+            INSTANCE.controls.SetActive(false);
             INSTANCE.successPanel.gameObject.SetActive(true);
             ///access score
             ///
@@ -130,12 +132,12 @@ public class GameMaster : MonoBehaviour
                 FindObjectOfType<PointSystem>().GivePoints(0, INSTANCE.VictoryPoints);
                 INSTANCE.cashWin = true;
             }
-            
         }
         else
         {
             print("Failed");
             INSTANCE.successPanel.gameObject.SetActive(false);
+            INSTANCE.controls.SetActive(true);
         }
     }
 
