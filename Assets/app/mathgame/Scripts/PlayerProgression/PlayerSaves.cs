@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Globalization;
 
 public static class PlayerSaves
 {
     static string folderPath = System.IO.Directory.GetCurrentDirectory() + "/Assets/Saves";
+    public static string dateFormat = "MM-dd-yyyy HH:mm:ss";
 
     public struct Data {
         public int account;
         public string playerName;
         public int points;
+        public DateTime lastPlayed;
     }
 
 
@@ -44,7 +47,8 @@ public static class PlayerSaves
         string filecontent = "";
 
         filecontent += playername + "\n";
-        filecontent += points.ToString();
+        filecontent += points.ToString() + "\n";
+        filecontent += DateTime.Now.ToString(dateFormat);
 
         File.WriteAllText(filePath, filecontent);
 
@@ -55,19 +59,22 @@ public static class PlayerSaves
     {
         string playerName;
         int oldPointsdump;
+        DateTime timedump;
 
-        LoadProgress(account, out playerName, out oldPointsdump);
+        LoadProgress(account, out playerName, out oldPointsdump, out timedump);
 
         SaveProgress(account, playerName, points, true);
     }
 
-    public static void LoadProgress(int account, out string playerName, out int points)
+    public static void LoadProgress(int account, out string playerName, out int points, out DateTime lastPlayed)
     {
         string[] filecontent = File.ReadAllLines(GetFilePath(account));
 
         playerName = filecontent[0];
 
         points = Int32.Parse(filecontent[1]);
+
+        lastPlayed = DateTime.ParseExact(filecontent[2], dateFormat, CultureInfo.InvariantCulture);
     }
 
     private static void BuildDirectory()
@@ -80,14 +87,16 @@ public static class PlayerSaves
     {
         string playerName;
         int points;
+        DateTime lastPlayed;
 
-        LoadProgress(account, out playerName, out points);
+        LoadProgress(account, out playerName, out points, out lastPlayed);
 
         Data data = new Data();
 
         data.account = account;
         data.playerName = playerName;
         data.points = points;
+        data.lastPlayed = lastPlayed;
 
         return data;
     }

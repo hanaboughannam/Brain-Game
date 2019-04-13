@@ -2037,6 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13049ef2c870f2347868a6229af21d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VictoryPoints: 25
   reader: {fileID: 1320983718}
   writer: {fileID: 1320983721}
   successPanel: {fileID: 1001509728}
@@ -7741,12 +7742,12 @@ PrefabInstance:
     - target: {fileID: 1310565677461372942, guid: b5eb54867daf21f4aa47c1b2017bc5c6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.17
+      value: -1.1699829
       objectReference: {fileID: 0}
     - target: {fileID: 1310565677461372942, guid: b5eb54867daf21f4aa47c1b2017bc5c6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.1475
+      value: -1.1474915
       objectReference: {fileID: 0}
     - target: {fileID: 1310565677461372942, guid: b5eb54867daf21f4aa47c1b2017bc5c6,
         type: 3}
@@ -7841,7 +7842,7 @@ PrefabInstance:
     - target: {fileID: 1310565678191502225, guid: b5eb54867daf21f4aa47c1b2017bc5c6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.09000015
+      value: -0.08999634
       objectReference: {fileID: 0}
     - target: {fileID: 1310565678191502225, guid: b5eb54867daf21f4aa47c1b2017bc5c6,
         type: 3}

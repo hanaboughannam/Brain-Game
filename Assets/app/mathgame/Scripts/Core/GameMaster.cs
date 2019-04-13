@@ -49,6 +49,8 @@ public static class EquationTester
 
 public class GameMaster : MonoBehaviour
 {
+    [SerializeField] int VictoryPoints;
+
     //cache
     static GameMaster INSTANCE;
     [SerializeField] SlotReader reader;
@@ -76,6 +78,7 @@ public class GameMaster : MonoBehaviour
 
         print("PlayerName: " + PlayerSaves.ReadProgress(0).playerName);
         print("Points: " + PlayerSaves.ReadProgress(0).points);
+        print("LastPlayed: " + PlayerSaves.ReadProgress(0).lastPlayed.ToString());
 
         difficulty_Levels = FindObjectOfType<Difficulty_Levels>();
 
@@ -124,7 +127,7 @@ public class GameMaster : MonoBehaviour
             ///
             if (!INSTANCE.cashWin)
             {
-                FindObjectOfType<PointSystem>().GivePoints(0, 100);
+                FindObjectOfType<PointSystem>().GivePoints(0, INSTANCE.VictoryPoints);
                 INSTANCE.cashWin = true;
             }
             
