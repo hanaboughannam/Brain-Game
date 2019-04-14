@@ -5,19 +5,22 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class KeyboardControls : MonoBehaviour
 {
-    [SerializeField] bool active = false;
+     bool active = false;
 
     [SerializeField] List<Block> blocks;
     [SerializeField] List<Slot> slots;
-    [SerializeField] int blockIndex;
-    int oldBlockIndex = -1;
-
-    [SerializeField] int slotIndex;
-    int oldSlotIndex = -1;
-    [SerializeField] float pos_x,pos_y;
     [SerializeField] int glowStrength = 10;
+    [SerializeField] float slideStrength = 1f;
+
+    int blockIndex;
+    int oldBlockIndex = -1;
+    int slotIndex;
+    int oldSlotIndex = -1;
+
+    float pos_x,pos_y;
+    
     bool moving_x, moving_y = false;
-    [SerializeField] bool isSelectingBlock = true;
+    bool isSelectingBlock = true;
     
 
     void Start()
@@ -99,7 +102,7 @@ public class KeyboardControls : MonoBehaviour
         while (true)
         {
             HandleHorizontalMovement();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(slideStrength);
         }
     }
 
